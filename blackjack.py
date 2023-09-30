@@ -36,11 +36,8 @@ while cont == 1:
         card = cards()  # Sorteie uma carta
         nome_do_cartao = card[0]  # Obtém o nome do cartão
         valor_do_cartao = card[1]  # Obtém o valor do cartão
-        cards_do_usuario.append((nome_do_cartao, valor_do_cartao))  # Adiciona a carta à lista
+        cards_do_usuario.append((valor_do_cartao))  # Adiciona a carta à lista
     else:
         cont = 0
 
-# Exibir as cartas sorteadas
-print("Cartas sorteadas:")
-for nome, valor in cards_do_usuario:
-    print(f"{nome}: {valor}")
+
