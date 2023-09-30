@@ -1,47 +1,46 @@
 import random
 
 def cards():
-    print()
+    cards_typs = [
+        ["Card 2", 2],
+        ["Card 3", 3],
+        ["Card 4", 4],
+        ["Card 5", 5],
+        ["Card 6", 6],
+        ["Card 7", 7],
+        ["Card 8", 8],
+        ["Card 9", 9],
+        ["Card 10", 10],
+        ["Valete", 10],
+        ["Dama", 10],
+        ["Rei", 10],
+        ["ÁS", 11]  # Adicionei o valor 11 para o ÁS
+    ]
+    random_cards = random.randint(0, 12)
+    card_valor = cards_typs[random_cards]
+    return card_valor
 
-cards_typs = [
-    ["Card 2", 2],
-    ["Card 3", 3],
-    ["Card 4", 4],
-    ["Card 5", 5],
-    ["Card 6", 6],
-    ["Card 7", 7],
-    ["Card 8", 8],
-    ["Card 9", 9],
-    ["Card 10", 10],
-    ["Valete", 10],
-    ["Dama", 10],
-    ["Rei", 10]
-]
+cards_do_usuario = []
+cont = 1
 
-opecao = input("Você Dejesar jogo BLACKJACK? S/N").lower()
+opecao = input("Você deseja jogar BLACKJACK? S/N").lower()
 
 if opecao == "s":
     cont = 1
 else:
     cont = 0
 
-while(cont == 1):
-    print()
+while cont == 1:
+    hit = int(input("Puxar uma CARTA? (1 para HIT, 0 para parar)"))
+    if hit == 1:
+        card = cards()  # Sorteie uma carta
+        nome_do_cartao = card[0]  # Obtém o nome do cartão
+        valor_do_cartao = card[1]  # Obtém o valor do cartão
+        cards_do_usuario.append((nome_do_cartao, valor_do_cartao))  # Adiciona a carta à lista
+    else:
+        cont = 0
 
-
-
-
-
-
-
-
-"""opecao = input("Você Dejesar jogo BLACKJACK? S/N").lower()
-
-if opecao == "s",
-    cont = 1
-else,
-    cont = 0
-
-while(cont == 1),
-    print()"""
-
+# Exibir as cartas sorteadas
+print("Cartas sorteadas:")
+for nome, valor in cards_do_usuario:
+    print(f"{nome}: {valor}")
