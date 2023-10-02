@@ -22,8 +22,12 @@ def cards():
     return card_valor
 
 def calcular_soma(cartas):
-    soma = sum([carta[1] for carta in cartas])
+    for valor in cards_do_usuario:
+        soma = sum(cards_do_usuario)
+    print("soma",soma)
     return soma
+
+         
 
 cards_do_usuario = []
 
@@ -45,7 +49,7 @@ else:
     cont = 0
 
 while cont == 1:
-    hit = (input("Puxar uma CARTA? (1 para HIT, 0 para parar)"))
+    hit = int(input("Puxar uma CARTA? (1 para HIT, 0 para parar)"))
     if hit == 1:
         card = cards()  # Sorteie uma carta
         valor_do_cartao = card[1]
@@ -59,10 +63,15 @@ while cont == 1:
         if soma_cartas > 21:
             print("Você Perdeu")
             break  # Saia do loop enquanto se a soma for maior que 21
-    else:
+        if soma_cartas <= 21:
+            print("Você Ganhou")
+            break
+    if hit == 0:
         cont = 0
 
+soma = 0
 # Exibir as cartas sorteadas
 print("Cartas sorteadas:")
 for valor in cards_do_usuario:
     print(f"{valor}")
+    
