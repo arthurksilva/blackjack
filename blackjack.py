@@ -1,8 +1,6 @@
 import random
 
 def cards():
-    cont_negativo = 1
-    qtd_de_passadas = 0
     cards_typs = [
         ["Card 2", 2],
         ["Card 3", 3],
@@ -23,19 +21,21 @@ def cards():
     card_valor = cards_typs[random_cards]
     return card_valor
 
-cards_do_usuario = []
-cont = 1
+def calcular_soma(cartas):
+    soma = sum([carta[1] for carta in cartas])
+    return soma
 
-for i in range(0,2):
+cards_do_usuario = []
+
+for i in range(0, 2):
     card = cards()
     nome_do_cartao = card[0]  # Obtém o nome do cartão
     valor_do_cartao = card[1]  # Obtém o valor do cartão
     cards_do_usuario.append((valor_do_cartao))
 
-
 opecao = input("Você deseja jogar BLACKJACK? S/N").lower()
 
-print("Cartas sorteadas:")
+print("2 Cartas:")
 for valor in cards_do_usuario:
     print(f"{valor}")
 
@@ -45,10 +45,20 @@ else:
     cont = 0
 
 while cont == 1:
-    hit = int(input("Puxar uma CARTA? (1 para HIT, 0 para parar)"))
+    hit = (input("Puxar uma CARTA? (1 para HIT, 0 para parar)"))
     if hit == 1:
         card = cards()  # Sorteie uma carta
+        valor_do_cartao = card[1]
         cards_do_usuario.append((valor_do_cartao))  # Adiciona a carta à lista
+        print("Carta:")
+        for valor in cards_do_usuario:
+            print(f"{valor}")
+        soma_cartas = calcular_soma(cards_do_usuario)
+        print(f"Soma das cartas: {soma_cartas}")
+        
+        if soma_cartas > 21:
+            print("Você Perdeu")
+            break  # Saia do loop enquanto se a soma for maior que 21
     else:
         cont = 0
 
